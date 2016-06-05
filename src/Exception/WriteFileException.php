@@ -2,6 +2,6 @@
 
 namespace Whoisdoma\DomainParser\Exception;
 
-class Exception extends AbstractException
+class WriteFileException extends AbstractException
 {
 }
