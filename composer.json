@@ -1,0 +1,13 @@
+{
+    "name": "Whoisdoma/DomainParser"
+  , "type": "library"
+  , "description": "A domain name parser to parse and to validate a domain name."
+  , "keywords": ["domainparser", "domain", "php"]
+  , "homepage": "https://github.com/Whoisdoma/DomainParser/"
+  , "author": "PlexiLabs"
+  , "license": "MIT"
+  , "autoload": {
+      "classmap": ["src/Parser.php"]
+  }
+  , "version": "1.0.0"
+}
