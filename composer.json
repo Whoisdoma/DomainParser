@@ -7,7 +7,9 @@
 	"author": "PlexiLabs",
 	"license": "MIT",
 	"autoload": {
-		"classmap": ["src/Parser.php"]
+		"psr-4": {
+			"Whoisdoma\\DomainParser\\": "src/"
+		}
 	},
 	"version": "1.0.0"
 }
