@@ -1,5 +1,5 @@
 {
-	"name": "Whoisdoma/DomainParser",
+	"name": "whoisdoma/domainparser",
 	"type": "library",
 	"description": "A domain name parser to parse and to validate a domain name.",
 	"keywords": ["domainparser", "domain", "php"],
