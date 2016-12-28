@@ -15,7 +15,7 @@ Licensed under the MIT License (the "License").
 
 Installation
 ------------
-Installing using composer: `composer require Whoisdoma/DomainParser`
+Installing using composer: `composer require whoisdoma/domainparser`
 
 Installing from source: `git clone git://github.com/Whoisdoma/DomainParser.git` or [download the latest release](https://github.com/Whoisdoma/DomainParser/zipball/master)
 
