@@ -10,6 +10,7 @@ error occures by doing so, e.g. characters that are not allowed. It will kill th
 and set a flag to false. This flag is used for the validation.
 
 Copyright (c) 2016 XAOS Interactive (http://xaosia.com) | Whoisdoma (http://whoisdoma.com)
+
 Licensed under the MIT License (the "License").
 
 Installation
@@ -25,6 +26,11 @@ Usage
 * Include Parser.php
 ```
 require_once 'DomainParser/Parser.php';
+```
+
+* or if using composer:
+```
+use Whoisdoma\DomainParser\Parser;
 ```
 
 * Create Parser() object
