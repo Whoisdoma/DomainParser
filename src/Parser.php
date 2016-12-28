@@ -4,6 +4,11 @@ namespace Whoisdoma\DomainParser;
 
 use Whoisdoma\DomainParser\Exception\AbstractException;
 
+/**
+ * define DomainParser Path
+ */
+define('DOMAINPARSERPATH', dirname(__FILE__));
+
 class Parser
 {
 
@@ -30,6 +35,7 @@ class Parser
      * @access protected
      */
     protected $reload = false;
+    protected $reloadAlways = false;
 
     /**
      * Life time of cached file
@@ -100,7 +106,7 @@ class Parser
     public function setCachePath($path = null)
     {
         if (is_null($path)) {
-            $this->path = sys_get_temp_dir();
+            $this->path = __DIR__;
         } else {
             $this->path = filter_var($path, FILTER_SANITIZE_STRING);
         }
@@ -242,7 +248,7 @@ class Parser
             }
 
             // will reload tld list if changes to Additional.php have been made
-            if ($this->tldList['timestamp'] < filemtime('./Additional.php')) {
+            if ($this->tldList['timestamp'] < filemtime(__DIR__ .'/Additional.php')) {
                 $this->reload = true;
             }
         }
@@ -334,7 +340,7 @@ class Parser
         }
 
         // load additional to add to list
-        require_once 'Additional.php';
+        require_once __DIR__ .'/Additional.php';
 
         // merge list and sort tlds by length within its group
         $this->tldList['content'] = array_merge_recursive($tlds, $additional);
@@ -349,6 +355,30 @@ class Parser
         }
 
         $this->tldList['timestamp'] = time();
+    }
+
+    /**
+     * Checks if the list of TLDs needs or should be reloaded.
+     *
+     * @return boolean
+     */
+    public function needsReload()
+    {
+        if ($this->reload) {
+            return true;
+        }
+
+        // will reload tld list if timestamp of cache file is outdated
+        if (time() - $this->tldList['timestamp'] > $this->cacheTime) {
+            return true;
+        }
+
+        // will reload tld list if changes to Additional.php have been made
+        if ($this->tldList['timestamp'] < filemtime(__DIR__ .'/Additional.php')) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
