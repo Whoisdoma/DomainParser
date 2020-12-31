@@ -3,7 +3,10 @@
 namespace Whoisdoma\DomainParser;
 
 use Whoisdoma\DomainParser\Exception\AbstractException;
-
+use Whoisdoma\DomainParser\Exception\ConnectException;
+use Whoisdoma\DomainParser\Exception\UnparsableStringException;
+use Whoisdoma\DomainParser\Exception\OpenFileException;
+use Whoisdoma\DomainParser\Exception\WriteFileException;
 /**
  * define DomainParser Path
  */
@@ -134,7 +137,7 @@ class Parser
      *
      * Also skips given string if it is longer than 63 characters.
      *
-     * @throws instance of AbstractException if throwExceptions = true
+     * @throws UnparsableStringException if throwExceptions = true
      * @param  string $unparsedString
      * @param  string $defaultTld
      * @return void
@@ -231,8 +234,8 @@ class Parser
     /**
      * Checks if the domain list exists or cached time is reached
      *
-     * @throws OpenFileErrorException
-     * @throws WriteFileErrorException
+     * @throws OpenFileException
+     * @throws WriteFileException
      * @return void
      */
     private function load()
@@ -282,7 +285,8 @@ class Parser
      *
      * The manual added list is not complete.
      *
-     * @throws ConnectErrorException
+     * @throws ConnectException
+     * @throws UnparsableStringException
      * @see Novutec\Additional.php $additional
      * @param  boolean $existFile
      * @return void
